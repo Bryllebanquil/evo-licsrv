@@ -10,7 +10,7 @@ services:
     name: evo-licsrv
     runtime: python
     plan: free
-    buildCommand: ""
+    buildCommand: echo ok
     startCommand: python evo_licsrv.py
     healthCheckPath: /health
     envVars:
