@@ -1,0 +1,19 @@
+# Render blueprint — deploys evo_licsrv.py as a public web service.
+# Push this folder to a git repo, then in Render: New + -> Blueprint ->
+# point it at the repo. Or create a Web Service manually with:
+#   Runtime:        Python 3
+#   Build command:  (leave empty — stdlib only)
+#   Start command:  python evo_licsrv.py
+# The service binds 0.0.0.0:$PORT automatically (Render sets PORT).
+services:
+  - type: web
+    name: evo-licsrv
+    runtime: python
+    plan: free
+    buildCommand: ""
+    startCommand: python evo_licsrv.py
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.6"
+    autoDeploy: true
